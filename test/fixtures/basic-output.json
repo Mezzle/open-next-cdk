@@ -1,0 +1,60 @@
+{
+  "version": "3",
+  "routes": [
+    {
+      "regex": "^/_next/static/.*$",
+      "origin": "s3"
+    },
+    {
+      "regex": "^/_next/image$",
+      "origin": "imageOptimizer"
+    },
+    {
+      "regex": "^/api/.*$",
+      "origin": "default"
+    }
+  ],
+  "origins": {
+    "s3": {
+      "type": "s3",
+      "copy": [
+        {
+          "from": "assets",
+          "to": "/",
+          "cached": false
+        },
+        {
+          "from": "cache",
+          "to": "_cache",
+          "cached": true,
+          "versionedSubDir": "_next"
+        }
+      ]
+    },
+    "default": {
+      "type": "function",
+      "handler": "index.handler",
+      "bundle": "server-functions/default",
+      "streaming": true
+    },
+    "imageOptimizer": {
+      "type": "function",
+      "handler": "index.handler",
+      "bundle": "image-optimization-function"
+    }
+  },
+  "behaviors": [
+    {
+      "pattern": "_next/static/*",
+      "origin": "s3"
+    },
+    {
+      "pattern": "_next/image",
+      "origin": "imageOptimizer"
+    },
+    {
+      "pattern": "*",
+      "origin": "default"
+    }
+  ]
+}

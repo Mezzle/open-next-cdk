@@ -1,0 +1,13 @@
+src/
+test/
+tsconfig.json
+.gitignore
+.eslintrc*
+coverage/
+cdk.out/
+.cdk.staging/
+vitest.config.ts
+biome.json
+pnpm-lock.yaml
+.claude/
+.github/
