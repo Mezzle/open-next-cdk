@@ -46,7 +46,7 @@
     "@biomejs/biome": "2.3.14",
     "@types/node": "^20.11.0",
     "@vitest/coverage-v8": "^4.0.18",
-    "aws-cdk-lib": "^2.175.1",
+    "aws-cdk-lib": "^2.238.0",
     "cdk-nag": "^2.28.0",
     "constructs": "^10.4.2",
     "typescript": "^5.3.3",
